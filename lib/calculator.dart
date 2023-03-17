@@ -50,6 +50,18 @@ class Calculator {
           r'}{2 * ' +
           R.y.toString() +
           r'} = ' +
+          r'\frac{' +
+          findNumberThatDividesSecondNumberBy0(
+                  3 * R.x * R.x + k, (2 * R.y), mod)
+              .toString() +
+          r'}{' +
+          (2 * R.y).toString() +
+          r'} = ' +
+          (findNumberThatDividesSecondNumberBy0(
+                      3 * R.x * R.x + k, (2 * R.y), mod) /
+                  (2 * R.y))
+              .toString() +
+          r' = ' +
           lambda.toString(),
     );
     stringBuffer.writeln(r'\\');
@@ -61,6 +73,8 @@ class Calculator {
         r'^2-2*' +
         R.x.toString() +
         r'=' +
+        (lambda * lambda - 2 * R.x).toString() +
+        r' = ' +
         x3.toString());
     stringBuffer.writeln(r'\\');
 
@@ -75,6 +89,8 @@ class Calculator {
           x3.toString() +
           r')-' +
           R.y.toString() +
+          r' = ' +
+          (lambda * (R.x - x3) - R.y).toString() +
           r' = ' +
           y3.toString(),
     );
@@ -106,6 +122,17 @@ class Calculator {
           r'-' +
           P.x.toString() +
           r'}' +
+          r' = ' +
+          r'\frac{' +
+          findNumberThatDividesSecondNumberBy0(Q.y - P.y, (Q.x - P.x), mod)
+              .toString() +
+          r'}{' +
+          (Q.x - P.x).toString() +
+          r'}' +
+          r' = ' +
+          (findNumberThatDividesSecondNumberBy0(Q.y - P.y, (Q.x - P.x), mod) /
+                  (Q.x - P.x))
+              .toString() +
           r'=' +
           lambda.toString(),
     );
@@ -120,6 +147,8 @@ class Calculator {
           P.x.toString() +
           r'-' +
           Q.x.toString() +
+          r'=' +
+          (lambda * lambda - P.x - Q.x).toString() +
           r'=' +
           x3.toString(),
     );
@@ -136,9 +165,11 @@ class Calculator {
         r')-' +
         P.y.toString() +
         r'=' +
+        (lambda * (P.x - x3) - P.y).toString() +
+        r'=' +
         y3.toString());
-    stringBuffer.writeln(r'\\');
-    stringBuffer.writeln(r'\end{aligned}');
+    stringBuffer.write(r'\\');
+    stringBuffer.write(r'\end{aligned}');
 
     debugPrint(stringBuffer
         .toString()); // Print the StringBuffer object to the console
