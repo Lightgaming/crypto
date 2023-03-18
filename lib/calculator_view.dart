@@ -43,184 +43,162 @@ class _CalculatorViewState extends State<CalculatorView> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
+            Row(
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: FocusTraversalGroup(
-                        policy: OrderedTraversalPolicy(),
-                        child: Form(
-                          key: _formKey1,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text('Point + Point'),
-                                TextFormField(
-                                  controller: modController,
-                                  validator: valueIsNotEmptyAndNumber,
-                                  decoration: const InputDecoration(
-                                    labelText: 'Mod',
-                                  ),
-                                ),
-                                TextFormField(
-                                  controller: x1Controller,
-                                  validator: valueIsNotEmptyAndNumber,
-                                  decoration: const InputDecoration(
-                                    labelText: 'x1',
-                                  ),
-                                ),
-                                TextFormField(
-                                  controller: y1Controller,
-                                  validator: valueIsNotEmptyAndNumber,
-                                  decoration: const InputDecoration(
-                                    labelText: 'y1',
-                                  ),
-                                ),
-                                TextFormField(
-                                  controller: x2Controller,
-                                  validator: valueIsNotEmptyAndNumber,
-                                  decoration: const InputDecoration(
-                                    labelText: 'x2',
-                                  ),
-                                ),
-                                TextFormField(
-                                  controller: y2Controller,
-                                  validator: valueIsNotEmptyAndNumber,
-                                  decoration: const InputDecoration(
-                                    labelText: 'y2',
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    if (_formKey1.currentState?.validate() ??
-                                        false) {
-                                      setState(() {
-                                        resultText = calculator.addPointToPoint(
-                                          Point(
-                                            int.parse(x1Controller.text),
-                                            int.parse(y1Controller.text),
-                                          ),
-                                          Point(
-                                            int.parse(x2Controller.text),
-                                            int.parse(y2Controller.text),
-                                          ),
-                                          int.parse(modController.text),
-                                        );
-                                      });
-                                    }
-                                  },
-                                  child: const Text('Add'),
-                                ),
-                              ],
+                Expanded(
+                  child: FocusTraversalGroup(
+                    policy: OrderedTraversalPolicy(),
+                    child: Form(
+                      key: _formKey1,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text('Point + Point'),
+                            TextFormField(
+                              controller: modController,
+                              validator: valueIsNotEmptyAndNumber,
+                              decoration: const InputDecoration(
+                                labelText: 'Mod',
+                              ),
                             ),
-                          ),
+                            TextFormField(
+                              controller: x1Controller,
+                              validator: valueIsNotEmptyAndNumber,
+                              decoration: const InputDecoration(
+                                labelText: 'x1',
+                              ),
+                            ),
+                            TextFormField(
+                              controller: y1Controller,
+                              validator: valueIsNotEmptyAndNumber,
+                              decoration: const InputDecoration(
+                                labelText: 'y1',
+                              ),
+                            ),
+                            TextFormField(
+                              controller: x2Controller,
+                              validator: valueIsNotEmptyAndNumber,
+                              decoration: const InputDecoration(
+                                labelText: 'x2',
+                              ),
+                            ),
+                            TextFormField(
+                              controller: y2Controller,
+                              validator: valueIsNotEmptyAndNumber,
+                              decoration: const InputDecoration(
+                                labelText: 'y2',
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                if (_formKey1.currentState?.validate() ??
+                                    false) {
+                                  setState(() {
+                                    resultText = calculator.addPointToPoint(
+                                      Point(
+                                        int.parse(x1Controller.text),
+                                        int.parse(y1Controller.text),
+                                      ),
+                                      Point(
+                                        int.parse(x2Controller.text),
+                                        int.parse(y2Controller.text),
+                                      ),
+                                      int.parse(modController.text),
+                                    );
+                                  });
+                                }
+                              },
+                              child: const Text('Add'),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: FocusTraversalGroup(
-                        policy: OrderedTraversalPolicy(),
-                        child: Form(
-                          key: _formKey2,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text('2 * Point'),
-                                TextFormField(
-                                  controller: kController,
-                                  validator: valueIsNotEmptyAndNumber,
-                                  decoration: const InputDecoration(
-                                    labelText: 'K',
-                                  ),
-                                ),
-                                TextFormField(
-                                  controller: modController,
-                                  validator: valueIsNotEmptyAndNumber,
-                                  decoration: const InputDecoration(
-                                    labelText: 'Mod',
-                                  ),
-                                ),
-                                TextFormField(
-                                  controller: x1Controller,
-                                  validator: valueIsNotEmptyAndNumber,
-                                  decoration: const InputDecoration(
-                                    labelText: 'x',
-                                  ),
-                                ),
-                                TextFormField(
-                                  controller: y1Controller,
-                                  validator: valueIsNotEmptyAndNumber,
-                                  decoration: const InputDecoration(
-                                    labelText: 'y',
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    if (_formKey2.currentState?.validate() ??
-                                        false) {
-                                      setState(() {
-                                        resultText =
-                                            calculator.multiplyPointBy2(
-                                          Point(
-                                            int.parse(x1Controller.text),
-                                            int.parse(y1Controller.text),
-                                          ),
-                                          int.parse(kController.text),
-                                          int.parse(modController.text),
-                                        );
-                                      });
-                                    }
-                                  },
-                                  child: const Text('Multiply'),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-                SelectableMath.tex(
-                  resultText,
-                  textStyle: TextStyle(
-                    fontSize: 35,
-                    color: widget.themeMode == ThemeMode.dark
-                        ? Colors.white
-                        : Colors.black,
+                Expanded(
+                  child: FocusTraversalGroup(
+                    policy: OrderedTraversalPolicy(),
+                    child: Form(
+                      key: _formKey2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text('2 * Point'),
+                            TextFormField(
+                              controller: kController,
+                              validator: valueIsNotEmptyAndNumber,
+                              decoration: const InputDecoration(
+                                labelText: 'K',
+                              ),
+                            ),
+                            TextFormField(
+                              controller: modController,
+                              validator: valueIsNotEmptyAndNumber,
+                              decoration: const InputDecoration(
+                                labelText: 'Mod',
+                              ),
+                            ),
+                            TextFormField(
+                              controller: x1Controller,
+                              validator: valueIsNotEmptyAndNumber,
+                              decoration: const InputDecoration(
+                                labelText: 'x',
+                              ),
+                            ),
+                            TextFormField(
+                              controller: y1Controller,
+                              validator: valueIsNotEmptyAndNumber,
+                              decoration: const InputDecoration(
+                                labelText: 'y',
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                if (_formKey2.currentState?.validate() ??
+                                    false) {
+                                  setState(() {
+                                    resultText = calculator.multiplyPointBy2(
+                                      Point(
+                                        int.parse(x1Controller.text),
+                                        int.parse(y1Controller.text),
+                                      ),
+                                      int.parse(kController.text),
+                                      int.parse(modController.text),
+                                    );
+                                  });
+                                }
+                              },
+                              child: const Text('Multiply'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
-            Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .background
-                        .withOpacity(0.6),
-                    width: 2,
-                  ),
-                ),
+            SelectableMath.tex(
+              resultText,
+              textStyle: TextStyle(
+                fontSize: 35,
+                color: widget.themeMode == ThemeMode.dark
+                    ? Colors.white
+                    : Colors.black,
               ),
-              height: kToolbarHeight,
-              width: double.infinity,
-              child: const Center(child: Text('Test')),
-            )
+            ),
           ],
         ),
       ),
